@@ -2,9 +2,24 @@
         <fitField id="0" 
         displayInChart="true" 
         sortOrder = "0" 
-        precision="2"
+        precision="1"
         chartTitle="@Strings.sunfacing_graph_label" 
-        dataLabel="@Strings.sunfacing_label"
+        dataLabel="@Strings.sunfacing_deg_label"
         unitLabel="@Strings.sunfacing_units" 
         fillColor="#FF0000" />
+
+		<fitField id="1" 
+			displayInActivitySummary="true" 
+			sortOrder = "1" 
+			precision="1"
+			dataLabel="@Strings.sunfacing_summary_pst_label"
+			unitLabel="@Strings.pst" />
+
+		<fitField id="2" 
+			displayInActivityLaps="true" 
+			sortOrder = "2" 
+			precision="1"
+			dataLabel="@Strings.sunfacing_laps_pst_label"
+			unitLabel="@Strings.pst" />
+
     </fitContributions>

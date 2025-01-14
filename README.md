@@ -1,29 +1,31 @@
 # SunFacing
 
-## Ide
-Hvor stor del av turen er mens sola er oppe? Hvor stor del er i soloppgang/solnedgang? Og ikke minst - hvor stor del av turen er med sola midt i trynet?
-Kan man lage en variabel som måler "SunFacing"? Kan denne variabelen logges sammen med aktiviteten? Kan statikk beregnes og presenteres?
+## Idea and motivation
+How much of the activity is while the sun is up? 
+How much is during sunrise/sunset? 
+And not least - how much of the trip is with the sun in the middle of the face?
+Can one create a variable that measures "SunFacing"? 
+Can this variable be logged together with the activity? 
+Can statics be calculated and presented?
 
 metrics:
-SunFacing-pst
-SessionStats 
-LapStats
+- SunFacing-pst
+- SessionStats 
+- LapStats
 
-Registrere alle datapiunkter med SunFacing?
-eller telle opp pr kategori (kategori er vinkelsegmenter)
+Register all data points with SunFacing?
+or count per category (category is angle segments)
 
 ## TODO
 - [x] Etablere prosjekt
-- [ ] Lagre "heading" i FIT-fil
-- [ ] Beregne statistikk    
+- [x] Lagre "heading" i FIT-fil
+- [x] Beregne statistikk
+- [ ] Lagre statistikk    
 - [ ] Lagre "SunFacing" i FIT-fil
 
 ## Arkitektur
 
-SessionData
-- setData(SunFacing)
-- getCategory(cat)
-
+xxx
 
 ## Implementing datafield in FIT-recording
 

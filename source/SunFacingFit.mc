@@ -4,35 +4,66 @@ using Toybox.FitContributor as Fit;
 
 
 const SUN_FACING_FIELD_RECORD_ID = 0;
-const SUN_FACE_NATIVE_NUM_RECORD_MESG = 3;
-const SUN_FACE_UNITS = "degrees";
+const SUN_FACING_FIELD_SESSION_PST_ID = 1;
+const SUN_FACING_FIELD_LAP_PST_ID = 2;
+
+const SUN_FACING_NATIVE_NUM_RECORD_MESG = 3;
+
+const SUN_FACING_NATIVE_NUM_LAP_MIN_MESG = 63;
+const SUN_FACING_NATIVE_NUM_SESSION_RATE_MESG = 64;
+
+const SUN_FACING_UNITS = "degrees";
+const SUN_FACING_PST_UNITS = "pst";
 
 
 class SunFacingFit {
 
-    hidden var mTimerRunning = false;
     hidden var mSunFacingRecordField;
-    
+    hidden var mSunFacingRateSessionField;
+    hidden var mSunFacingRateLapField;
+
+    hidden var mTimerRunning = false;
+
+	hidden var mSessionStats;
+	hidden var mLapStats;
+
     function initialize(dataField) {
-        mSunFacingRecordField = dataField.createField("sun_facing", SUN_FACING_FIELD_RECORD_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>SUN_FACE_NATIVE_NUM_RECORD_MESG, :mesgType=>Fit.MESG_TYPE_RECORD, :units=>SUN_FACE_UNITS });
+        var sunFacingDegLabel = Application.loadResource(Rez.Strings.sunfacing_deg_label);
+        mSunFacingRecordField = dataField.createField(sunFacingDegLabel, SUN_FACING_FIELD_RECORD_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>SUN_FACING_NATIVE_NUM_RECORD_MESG, :mesgType=>Fit.MESG_TYPE_RECORD, :units=>SUN_FACING_UNITS });
+		
+        var sunFacingSummaryPstLabel = Application.loadResource(Rez.Strings.sunfacing_summary_pst_label);
+        mSunFacingRateSessionField = dataField.createField(sunFacingSummaryPstLabel, SUN_FACING_FIELD_SESSION_PST_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>SUN_FACING_NATIVE_NUM_SESSION_RATE_MESG, :mesgType=>Fit.MESG_TYPE_SESSION, :units=>SUN_FACING_PST_UNITS });
+       
+        var sunFacingLapsPstLabel = Application.loadResource(Rez.Strings.sunfacing_laps_pst_label);
+        mSunFacingRateLapField = dataField.createField(sunFacingLapsPstLabel, SUN_FACING_FIELD_LAP_PST_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>SUN_FACING_NATIVE_NUM_LAP_MIN_MESG, :mesgType=>Fit.MESG_TYPE_LAP, :units=>SUN_FACING_PST_UNITS });
+
+        mSessionStats = new SunFacingStatistics();
+		mLapStats = new SunFacingStatistics();    
     }
 
-    function setSunFacingData(SunFacing) {
-        mSunFacingRecordField.setData(SunFacing);
+    function setSunFacingData(SunFacingHeading) {
+        mSunFacingRecordField.setData(SunFacingHeading);
+
+        if(mTimerRunning) {
+            mSessionStats.setData(SunFacingHeading);
+            mLapStats.setData(SunFacingHeading);
+
+       		mSunFacingRateSessionField.setData(mSessionStats.SunFacingPst());
+    	}
     }
 
     function onNextMultisportLeg() {
-    	//mSessionStats.reset();
-    	//mLapStats.reset();
+    	mSessionStats.reset();
+    	mLapStats.reset();
     }
 
     function onTimerLap() {
-    	//mLapStats.reset();
+    	mLapStats.reset();
     }
     
     function onTimerReset() {
-    	//mSessionStats.reset();
-    	//mLapStats.reset();
+    	mSessionStats.reset();
+    	mLapStats.reset();
     }
     
     function onTimerPause() {
