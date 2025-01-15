@@ -23,7 +23,15 @@ class SunFacingView extends WatchUi.SimpleDataField {
     function compute(info as Activity.Info) as Numeric or Duration or String or Null {
         // See Activity.Info in the documentation for available information.
         
-        var SunFacingHeading = info.currentHeading/Math.PI*180;
+        //Track is the direction of travel in radians based on GPS movement. If supported by the device, this provides compass orientation when stopped.
+        var SunFacingHeading = 0.0;
+
+        if (info.track>=0.00001 || info.track<=-0.00001) {
+            SunFacingHeading = info.track/Math.PI*180.0;
+        }
+        else {
+            SunFacingHeading = info.currentHeading/Math.PI*180.0;
+        }
 
         mSunFacingFit.setSunFacingData(SunFacingHeading);
 

@@ -75,7 +75,7 @@ class SunFacingStatistics{
             Nort.setData(value);
         } else if(value >= 45 && value < 135) {
             East.setData(value);
-        } else if(value < -45 && value <= -135) {
+        } else if(value < -45 && value >= -135) {
             West.setData(value);
         } else {
             Sout.setData(value);
