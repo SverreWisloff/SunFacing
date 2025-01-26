@@ -8,24 +8,11 @@ Can one create a variable that measures "SunFacing"?
 Can this variable be logged together with the activity? 
 Can statics be calculated and presented?
 
-metrics:
-- SunFacing-pst
-- SessionStats 
-- LapStats
+### possible metrics:
+- SunFacing-deg: Relative angle-difference between the sun's azimuth and the direction/heading of the apparent activity 
+- SunFacing-pst: Percentage of session activity where the direction has had the sun at 45 degrees relative to the apparent direction. Both for the entire session, and for each lap
 
-Register all data points with SunFacing?
-or count per category (category is angle segments)
-
-## TODO
-- [x] Etablere prosjekt
-- [x] Lagre "heading" i FIT-fil
-- [x] Beregne statistikk
-- [ ] Lagre statistikk    
-- [ ] Lagre "SunFacing" i FIT-fil
-
-## Arkitektur
-
-xxx
+# Notes to self while coding
 
 ## Implementing datafield in FIT-recording
 
@@ -36,11 +23,24 @@ Add a new metric - SunSeeker - to the app. This metric tell how much a activitie
 4)  create our Field in the code by using the ´Session.createField()´ method of the ´Session´ object within your source.
 More info: https://developer.garmin.com/connect-iq/core-topics/activity-recording/
 
+## A good sample project
 
 A sample "Data Field"-project that uses barrels, app settings, on-device app settings, FIT Developer Fields, and unit tests: https://github.com/garmin/connectiq-apps/tree/master/datafields/GenericAntPlusHeartRateField
 
+## Importent
 
-# Notes to self while coding
+To see the data in Garmin Connect, you have to have installed the app from the app store (you can make it a beta app so only you can download it while testing)
+
+## Viewing fit-file
 
 https://www.fitfileviewer.com/
+
+
+# TODO
+- [x] Etablere prosjekt
+- [x] Lagre "heading" i FIT-fil
+- [x] Beregne statistikk
+- [ ] Se data på Garmin connect
+- [ ] Lagre statistikk    
+- [ ] Lagre "SunFacing" i FIT-fil
 
