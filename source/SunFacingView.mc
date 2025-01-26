@@ -5,12 +5,16 @@ import Toybox.WatchUi;
 import Toybox.Math;
 import Toybox.Position;
 import SunCalcModule;
+//import Heading;
+
+
 
 class SunFacingView extends WatchUi.SimpleDataField {
 
     hidden var mSunFacingFit;
     private var _sc;
-    public var _sunAzimuth=0.0 as Double;
+//    public var _sunAzimuth=0.0 as Double;
+    public var _sunAzimuth as Heading;
     public var _lastSunAzimuth = null as Time.Moment;
 
     // Set the label of the data field here.
@@ -21,6 +25,7 @@ class SunFacingView extends WatchUi.SimpleDataField {
         mSunFacingFit = new SunFacingFit(self);
         
         _sc = new sunCalc();
+        _sunAzimuth = new Heading();
 
         initialize_SunCalc();
 
@@ -48,7 +53,7 @@ class SunFacingView extends WatchUi.SimpleDataField {
             _sc.setDate(momentNow.value());
             var sunCoordLocal = _sc.getSunPosition();
 
-            _sunAzimuth = sunCoordLocal.azimuth/Math.PI*180.0;
+            _sunAzimuth.setHeading(sunCoordLocal.azimuth);
             _lastSunAzimuth = momentNow;
 		}
 
@@ -87,10 +92,10 @@ class SunFacingView extends WatchUi.SimpleDataField {
             heading = info.currentHeading/Math.PI*180.0;
         }
 
-        SunFacingHeading = _sunAzimuth - heading;
-        mSunFacingFit.setSunFacingData(SunFacingHeading);
+        SunFacingHeading = _sunAzimuth.subtract(heading.toDouble());
+        mSunFacingFit.setSunFacingData(SunFacingHeading.reduceHeading());
 
-        return SunFacingHeading;
+        return SunFacingHeading.reduceHeading();
     }
 
 
