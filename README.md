@@ -37,13 +37,13 @@ https://www.fitfileviewer.com/
 
 
 # TODO
-- [x] Etablere prosjekt
-- [x] Lagre "heading-deg" i FIT-fil
-- [x] Lagre "heading-statistikk" for lap og sesion i FIT-fil
 - [ ] Lage Beta-versjon i app store for se og teste data på Garmin connect 
-- [ ] Beregne SunFacing-deg 
 - [ ] Filtrere vekk tidspunkt når sola er nede
 - [ ] Se data på Garmin connect
 - [ ] Lagre statistikk    
 - [ ] Lagre "SunFacing" i FIT-fil
+- [x] Etablere prosjekt
+- [x] Lagre "heading-deg" i FIT-fil
+- [x] Lagre "heading-statistikk" for lap og sesion i FIT-fil
+- [x] Beregne SunFacing-deg 
 

@@ -50,17 +50,18 @@ class Heading {
     function subtract(other as Heading or Double) as Heading {
         var newHeading = new Heading();
         var otherDeg = other.toDouble();
-        newHeading.setHeading((self._heading - otherDeg + 360) % 360);
+        newHeading.setHeading(self._heading - otherDeg);
+        newHeading.reduceHeading(true);
         return newHeading;
     }
 
     // Method to reduce the heading to be within -180 to 180 degrees
-    function reduceHeading() as Double {
-        var reducedHeading = _heading % 360;
-        if (reducedHeading > 180) {
-            reducedHeading -= 360;
-        } else if (reducedHeading < -180) {
-            reducedHeading += 360;
+    function reduceHeading(update as Boolean) as Double {
+        var reducedHeading = _heading;
+        if (reducedHeading > 180.0) {
+            reducedHeading -= 360.0;
+        } else if (reducedHeading < -180.0) {
+            reducedHeading += 360.0;
         }
         return reducedHeading;
     }

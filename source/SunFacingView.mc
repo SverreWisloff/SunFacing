@@ -53,8 +53,11 @@ class SunFacingView extends WatchUi.SimpleDataField {
             _sc.setDate(momentNow.value());
             var sunCoordLocal = _sc.getSunPosition();
 
-            _sunAzimuth.setHeading(sunCoordLocal.azimuth);
+            _sunAzimuth.setHeading(sunCoordLocal.azimuth-180.0);
             _lastSunAzimuth = momentNow;
+
+            System.println("Date=" + _sc.PrintTime(momentNow.value(), "initialize_SunCalc:: ") + " latitude=" + latitude + " longitude=" + longitude + " sunAzimuth=" + _sunAzimuth.reduceHeading(false));
+
 		}
 
         return;
@@ -76,7 +79,8 @@ class SunFacingView extends WatchUi.SimpleDataField {
             var now = Time.now();
             var momentNow = new Time.Moment(now.value() );
             var timeDiffSeconds = momentNow.compare(_lastSunAzimuth);
-            if (timeDiffSeconds > 36000) {
+            if (timeDiffSeconds > 6) {
+                //Recalculate sun azimuth every 10 minutes
                 initialize_SunCalc();
             }
         }
@@ -93,9 +97,11 @@ class SunFacingView extends WatchUi.SimpleDataField {
         }
 
         SunFacingHeading = _sunAzimuth.subtract(heading.toDouble());
-        mSunFacingFit.setSunFacingData(SunFacingHeading.reduceHeading());
+        SunFacingHeading.reduceHeading(true);
 
-        return SunFacingHeading.reduceHeading();
+        System.println("sunAzimuth=" + _sunAzimuth.toDouble() + " heading=" + heading.toDouble() + " SunFacing=" + SunFacingHeading.reduceHeading(false));
+
+        return SunFacingHeading.reduceHeading(false);
     }
 
 
