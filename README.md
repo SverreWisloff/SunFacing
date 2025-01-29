@@ -46,17 +46,28 @@ To see the data in Garmin Connect, you have to have installed the app from the a
 
 https://www.fitfileviewer.com/
 
-Making fonts: https://ggt.teretto.com/
+## Unit testing
+[Unit Testing](https://developer.garmin.com/connect-iq/core-topics/unit-testing/) docs.
+
+An [example](https://github.com/ferranpujolcamins/GarminApps/tree/main/BarrelTests/tests/Shared_IQ_1_4_0). 
+
+A nice [tutorial](https://starttorun.info/tutorial-create-connect-iq-unit-tests/).
+
 
 
 # TODO
-- [ ] Lage Beta-versjon i app store for se og teste data på Garmin connect 
 - [ ] Filtrere vekk tidspunkt når sola er nede
-- [ ] Se data på Garmin connect
-- [ ] Lagre statistikk    
-- [ ] Lagre "SunFacing" i FIT-fil
+- [ ] Test-rammeverk i monkey-c? 
+[Unit Testing](https://developer.garmin.com/connect-iq/core-topics/unit-testing/) docs. 
+An [example](https://github.com/ferranpujolcamins/GarminApps/tree/main/BarrelTests/tests/Shared_IQ_1_4_0). 
+A nice [tutorial](https://starttorun.info/tutorial-create-connect-iq-unit-tests/). 
+- [ ] Publisere på garmin connect
 - [x] Etablere prosjekt
 - [x] Lagre "heading-deg" i FIT-fil
 - [x] Lagre "heading-statistikk" for lap og sesion i FIT-fil
 - [x] Beregne SunFacing-deg 
+- [x] Lage Beta-versjon i app store for se og teste data på Garmin connect 
+- [x] Se data på Garmin connect
+- [x] Lagre statistikk    
+- [x] Lagre "SunFacing" i FIT-fil
 

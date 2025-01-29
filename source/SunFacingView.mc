@@ -5,15 +5,12 @@ import Toybox.WatchUi;
 import Toybox.Math;
 import Toybox.Position;
 import SunCalcModule;
-//import Heading;
-
 
 
 class SunFacingView extends WatchUi.SimpleDataField {
 
     hidden var mSunFacingFit;
     private var _sc;
-//    public var _sunAzimuth=0.0 as Double;
     public var _sunAzimuth as Heading;
     public var _lastSunAzimuth = null as Time.Moment;
 
@@ -28,7 +25,6 @@ class SunFacingView extends WatchUi.SimpleDataField {
         _sunAzimuth = new Heading();
 
         initialize_SunCalc();
-
     }
 
     function initialize_SunCalc(){
@@ -36,7 +32,7 @@ class SunFacingView extends WatchUi.SimpleDataField {
 		if (locationInfo == null || locationInfo.position == null) {
 			return;
 		}
-		var location = locationInfo.position.toDegrees(); // as Array<Double>;
+		var location = locationInfo.position.toDegrees();
 		if ((Math.round(location[0]) == 0 && Math.round(location[1]) == 0) ||
 			Math.round(location[0]) == 180 && Math.round(location[1]) == 180) {
 			return;
@@ -46,7 +42,6 @@ class SunFacingView extends WatchUi.SimpleDataField {
         var momentNow = new Time.Moment(now.value() );            
 
         if (location != null) {
-            //var today = Gregorian.info(now, Time.FORMAT_SHORT);
             var latitude = location[0].toDouble();
             var longitude = location[1].toDouble();
             _sc.setPosition(latitude, longitude);
@@ -57,7 +52,6 @@ class SunFacingView extends WatchUi.SimpleDataField {
             _lastSunAzimuth = momentNow;
 
             System.println( _sc.PrintTime(momentNow.value(), "initialize_SunCalc") + " latitude=" + latitude + " longitude=" + longitude + " sunAzimuth=" + _sunAzimuth.reduceHeading(false));
-
 		}
 
         return;

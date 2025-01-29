@@ -2,7 +2,22 @@ import Toybox.System;
 import Toybox.Position;
 import Toybox.Math;
 import Toybox.Lang;
-//import Toybox.WatchUi;
+
+
+
+// Reduces heading to range -180 to 180
+function reduseHeading(heading) {
+    var returnHeading;
+    if(heading < -180) {
+        returnHeading = heading + 360;
+    } else if(heading >= 180) {
+        returnHeading = heading - 360;
+    } else {
+        returnHeading = heading;
+    }
+    return returnHeading;
+}
+
 
 class Heading {
 
