@@ -1,11 +1,11 @@
 <strings>
     <string id="AppName">SunFacing</string>
     <string id="sunfacing_graph_label">SunFacing</string>
-    <string id="sunfacing_deg_label">SunFacing deg</string>
-    <string id="sunfacing_units">sf unit</string>
+    <string id="sunfacing_deg_label">SunFacing angle</string>
+    <string id="sunfacing_units">sf</string>
 
-    <string id="sunfacing_summary_pst_label">SunFacing summary pst</string>
-    <string id="sunfacing_laps_pst_label">SunFacing laps pst</string>
-    <string id="pst">pst</string>
+    <string id="sunfacing_summary_pst_label">SunFacing</string>
+    <string id="sunfacing_laps_pst_label">SunFacing</string>
+    <string id="pst">%</string>
 
 </strings>

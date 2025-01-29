@@ -56,7 +56,7 @@ class SunFacingView extends WatchUi.SimpleDataField {
             _sunAzimuth.setHeading(sunCoordLocal.azimuth-180.0);
             _lastSunAzimuth = momentNow;
 
-            System.println("Date=" + _sc.PrintTime(momentNow.value(), "initialize_SunCalc:: ") + " latitude=" + latitude + " longitude=" + longitude + " sunAzimuth=" + _sunAzimuth.reduceHeading(false));
+            System.println( _sc.PrintTime(momentNow.value(), "initialize_SunCalc") + " latitude=" + latitude + " longitude=" + longitude + " sunAzimuth=" + _sunAzimuth.reduceHeading(false));
 
 		}
 
@@ -68,7 +68,7 @@ class SunFacingView extends WatchUi.SimpleDataField {
     // Note that compute() and onUpdate() are asynchronous, and there is no
     // guarantee that compute() will be called before onUpdate().
     function compute(info as Activity.Info) as Numeric or Duration or String or Null {
-        // See Activity.Info in the documentation for available information.
+        // See Activity.Info in the documentation for available information. 
 
         if (_sc.getKnownPosition()==false){
             initialize_SunCalc();
@@ -79,7 +79,7 @@ class SunFacingView extends WatchUi.SimpleDataField {
             var now = Time.now();
             var momentNow = new Time.Moment(now.value() );
             var timeDiffSeconds = momentNow.compare(_lastSunAzimuth);
-            if (timeDiffSeconds > 6) {
+            if (timeDiffSeconds > 600) {
                 //Recalculate sun azimuth every 10 minutes
                 initialize_SunCalc();
             }
@@ -100,6 +100,8 @@ class SunFacingView extends WatchUi.SimpleDataField {
         SunFacingHeading.reduceHeading(true);
 
         System.println("sunAzimuth=" + _sunAzimuth.toDouble() + " heading=" + heading.toDouble() + " SunFacing=" + SunFacingHeading.reduceHeading(false));
+
+        mSunFacingFit.setSunFacingData(SunFacingHeading.toDouble());
 
         return SunFacingHeading.reduceHeading(false);
     }

@@ -1,13 +1,5 @@
 /bin
-prg/SunFacing-fit_contributions.json
+/prg
+/test
 iq/SunFacing.iq
-prg/SunFacing.prg
-prg/SunFacing.prg.debug.xml
-prg/gen/006-B4375-00/source/Rez.mcgen
-prg/gen/resources/cache/i6c1fd9c6.mbc
-prg/internal-mir/Rez.mir
-prg/mir/source/SunFacingApp.mir
-prg/mir/source/SunFacingFit.mir
-prg/mir/source/SunFacingStatistics.mir
-prg/mir/source/SunFacingView.mir
 SunFacing.code-workspace

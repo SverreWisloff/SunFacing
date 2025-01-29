@@ -6,7 +6,7 @@
         chartTitle="@Strings.sunfacing_graph_label" 
         dataLabel="@Strings.sunfacing_deg_label"
         unitLabel="@Strings.sunfacing_units" 
-        fillColor="#FF0000" />
+        fillColor="#ffe100" />
 
 		<fitField id="1" 
 			displayInActivitySummary="true" 

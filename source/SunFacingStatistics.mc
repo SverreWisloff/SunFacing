@@ -97,7 +97,7 @@ class SunFacingStatistics{
             return 0;
         }
         
-        var SunFacingPst = Sout.count().toDouble() / totalCount * 100.0;
+        var SunFacingPst = Nort.count().toDouble() / totalCount * 100.0;
 
         return SunFacingPst; 
     }

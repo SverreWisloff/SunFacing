@@ -12,6 +12,16 @@ Can statics be calculated and presented?
 - SunFacing-deg: Relative angle-difference between the sun's azimuth and the direction/heading of the apparent activity 
 - SunFacing-pst: Percentage of session activity where the direction has had the sun at 45 degrees relative to the apparent direction. Both for the entire session, and for each lap
 
+## App-info
+
+_The goal of this project is to create a Garmin data-field that compute SunFacing which shows the angle the sun is in relation to the direction of activity. And how much of the activity where the sun was right in your face._
+
+This datafield app compute SunFacing which is the angle the sun is in relation to the direction of activity. 
+
+For example, 0 degrees means that we are moving directly towards the sun. 180 degrees means that the sun is directly behind us. 
+
+After the activity, some statistics are calculated. The app calculates how much of the activity, and the lap, where the sun was within 45 degrees. That is, how much of the activity where the sun was right in your face.
+
 # Notes to self while coding
 
 ## Implementing datafield in FIT-recording
@@ -21,19 +31,22 @@ Add a new metric - SunSeeker - to the app. This metric tell how much a activitie
 2)  add your field definitions in your resources using the ´fitContributions´ block
 3)  define metadata to display our chart to Garmin Connect via ´fitField´
 4)  create our Field in the code by using the ´Session.createField()´ method of the ´Session´ object within your source.
+
 More info: https://developer.garmin.com/connect-iq/core-topics/activity-recording/
 
 ## A good sample project
 
 A sample "Data Field"-project that uses barrels, app settings, on-device app settings, FIT Developer Fields, and unit tests: https://github.com/garmin/connectiq-apps/tree/master/datafields/GenericAntPlusHeartRateField
 
-## Importent
+## Important
 
 To see the data in Garmin Connect, you have to have installed the app from the app store (you can make it a beta app so only you can download it while testing)
 
 ## Viewing fit-file
 
 https://www.fitfileviewer.com/
+
+Making fonts: https://ggt.teretto.com/
 
 
 # TODO
