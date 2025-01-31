@@ -39,6 +39,19 @@ class Heading {
         return _heading;
     }
 
+    // Method to get the heading
+    function getSunFacingPst() as Double {
+        var SunFacingPst=0.0 as Double;
+        self.reduceHeading(true);
+        if (_heading.abs() < 90.0) {
+            SunFacingPst = 100.0 - (_heading/90.0 * 100.0).abs();
+        }
+        else  {
+            SunFacingPst = 0.0;
+        }
+        return SunFacingPst;
+    }
+
     // Method to get the heading as a Double
     function toDouble() as Double {
         return _heading;
@@ -77,6 +90,9 @@ class Heading {
             reducedHeading -= 360.0;
         } else if (reducedHeading < -180.0) {
             reducedHeading += 360.0;
+        }
+        if (update) {
+            _heading = reducedHeading;
         }
         return reducedHeading;
     }

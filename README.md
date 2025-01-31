@@ -56,12 +56,15 @@ A nice [tutorial](https://starttorun.info/tutorial-create-connect-iq-unit-tests/
 
 
 # TODO
+- [ ] Cleaning code
+- [ ] Vinkel vaskelig å forstå, bruke % isf
+- [ ] Publisere på garmin connect
+- [ ] Heading hopper mye, implementere lowpass-filter
 - [ ] Filtrere vekk tidspunkt når sola er nede
 - [ ] Test-rammeverk i monkey-c? 
 [Unit Testing](https://developer.garmin.com/connect-iq/core-topics/unit-testing/) docs. 
 An [example](https://github.com/ferranpujolcamins/GarminApps/tree/main/BarrelTests/tests/Shared_IQ_1_4_0). 
 A nice [tutorial](https://starttorun.info/tutorial-create-connect-iq-unit-tests/). 
-- [ ] Publisere på garmin connect
 - [x] Etablere prosjekt
 - [x] Lagre "heading-deg" i FIT-fil
 - [x] Lagre "heading-statistikk" for lap og sesion i FIT-fil

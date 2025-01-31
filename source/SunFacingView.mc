@@ -91,13 +91,14 @@ class SunFacingView extends WatchUi.SimpleDataField {
         }
 
         SunFacingHeading = _sunAzimuth.subtract(heading.toDouble());
-        SunFacingHeading.reduceHeading(true);
 
-        System.println("sunAzimuth=" + _sunAzimuth.toDouble() + " heading=" + heading.toDouble() + " SunFacing=" + SunFacingHeading.reduceHeading(false));
+        var SunFacingPst = SunFacingHeading.getSunFacingPst();
 
-        mSunFacingFit.setSunFacingData(SunFacingHeading.toDouble());
+        System.println("sunAzimuth=" + _sunAzimuth.toDouble() + " heading=" + heading.toDouble() + " SunFacingPst=" + SunFacingPst);
 
-        return SunFacingHeading.reduceHeading(false);
+        mSunFacingFit.setSunFacingData(SunFacingPst);
+
+        return SunFacingPst;
     }
 
 
