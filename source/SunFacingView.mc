@@ -80,7 +80,8 @@ class SunFacingView extends WatchUi.SimpleDataField {
         }
         
         //Track is the direction of travel in radians based on GPS movement. If supported by the device, this provides compass orientation when stopped.
-        var SunFacingHeading = 0.0;
+        var SunFacingHeading;
+        var SunFacingIndex=0;
         var heading = 0.0;
 
         if (info.track>=0.00001 || info.track<=-0.00001) {
@@ -92,11 +93,11 @@ class SunFacingView extends WatchUi.SimpleDataField {
 
         SunFacingHeading = _sunAzimuth.subtract(heading.toDouble());
 
-        var SunFacingIndex = SunFacingHeading.getSunFacingIndex();
+        SunFacingIndex = SunFacingHeading.getSunFacingIndex();
 
         System.println("sunAzimuth=" + _sunAzimuth.toDouble() + " heading=" + heading.toDouble() + " SunFacingIndex=" + SunFacingIndex);
 
-        mSunFacingFit.setSunFacingData(SunFacingIndex);
+        mSunFacingFit.setSunFacingData(SunFacingHeading.getHeading(), SunFacingIndex);
 
         return SunFacingIndex;
     }

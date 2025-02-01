@@ -1,4 +1,4 @@
-
+import Toybox.Lang;
 using Toybox.WatchUi;
 using Toybox.FitContributor as Fit;
 
@@ -18,7 +18,7 @@ const SUN_FACING_PST_UNITS = "pst";
 
 class SunFacingFit {
 
-    hidden var mSunFacingRecordField;
+    hidden var mSunFacingIndexRecordField;
     hidden var mSunFacingRateSessionField;
     hidden var mSunFacingRateLapField;
 
@@ -29,8 +29,8 @@ class SunFacingFit {
 
     function initialize(dataField) {
         var sunFacingIndexLabel = Application.loadResource(Rez.Strings.sunfacing_index_label);
-//        mSunFacingRecordField = dataField.createField(sunFacingDegLabel, SUN_FACING_FIELD_RECORD_ID, Fit.DATA_TYPE_FLOAT, { :nativeNum=>SUN_FACING_NATIVE_NUM_RECORD_MESG, :mesgType=>Fit.MESG_TYPE_RECORD, :units=>SUN_FACING_UNITS });
-        mSunFacingRecordField = dataField.createField(sunFacingIndexLabel, SUN_FACING_FIELD_RECORD_ID, Fit.DATA_TYPE_UINT8, {                                                :mesgType=>Fit.MESG_TYPE_RECORD, :units=>SUN_FACING_UNITS });
+//        mSunFacingIndexRecordField = dataField.createField(sunFacingDegLabel, SUN_FACING_FIELD_RECORD_ID, Fit.DATA_TYPE_FLOAT, { :nativeNum=>SUN_FACING_NATIVE_NUM_RECORD_MESG, :mesgType=>Fit.MESG_TYPE_RECORD, :units=>SUN_FACING_UNITS });
+        mSunFacingIndexRecordField = dataField.createField(sunFacingIndexLabel, SUN_FACING_FIELD_RECORD_ID, Fit.DATA_TYPE_UINT8, {                                                :mesgType=>Fit.MESG_TYPE_RECORD, :units=>SUN_FACING_UNITS });
 		
         var sunFacingSummaryPstLabel = Application.loadResource(Rez.Strings.sunfacing_summary_pst_label);
 //        mSunFacingRateSessionField = dataField.createField(sunFacingSummaryPstLabel, SUN_FACING_FIELD_SESSION_PST_ID, Fit.DATA_TYPE_FLOAT, { :nativeNum=>SUN_FACING_NATIVE_NUM_SESSION_RATE_MESG, :mesgType=>Fit.MESG_TYPE_SESSION, :units=>SUN_FACING_PST_UNITS });
@@ -44,8 +44,8 @@ class SunFacingFit {
 		mLapStats = new SunFacingStatistics();    
     }
 
-    function setSunFacingData(SunFacingHeading) {
-        mSunFacingRecordField.setData(SunFacingHeading);
+    function setSunFacingData(SunFacingHeading as Double, SunFacingIndex as Number) {
+        mSunFacingIndexRecordField.setData(SunFacingIndex);
 
         if(mTimerRunning) {
             mSessionStats.setData(SunFacingHeading);

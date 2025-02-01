@@ -1,8 +1,6 @@
 //import SimpleStats;
 
 
-
-
 class SunFacingStatistics{
 
 	public var Nort;
@@ -16,7 +14,6 @@ class SunFacingStatistics{
 		West = new SimpleStats();
 		Sout = new SimpleStats();
 	}
-
     
     function setData(value) {
 

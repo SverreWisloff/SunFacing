@@ -8,10 +8,11 @@ import Toybox.Lang;
 // Reduces heading to range -180 to 180
 function reduseHeading(heading) {
     var returnHeading;
-    if(heading < -180) {
-        returnHeading = heading + 360;
-    } else if(heading >= 180) {
-        returnHeading = heading - 360;
+    heading = heading.toFloat();
+    if(heading < -180.0) {
+        returnHeading = heading + 360.0;
+    } else if(heading >= 180.0) {
+        returnHeading = heading - 360.0;
     } else {
         returnHeading = heading;
     }
