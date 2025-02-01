@@ -2,9 +2,9 @@
         <fitField id="0" 
         displayInChart="true" 
         sortOrder = "0" 
-        precision="1"
+        precision="0"
         chartTitle="@Strings.sunfacing_graph_label" 
-        dataLabel="@Strings.sunfacing_deg_label"
+        dataLabel="@Strings.sunfacing_index_label"
         unitLabel="@Strings.sunfacing_units" 
         fillColor="#ffe100" />
 

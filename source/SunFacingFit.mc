@@ -7,12 +7,12 @@ const SUN_FACING_FIELD_RECORD_ID = 0;
 const SUN_FACING_FIELD_SESSION_PST_ID = 1;
 const SUN_FACING_FIELD_LAP_PST_ID = 2;
 
-const SUN_FACING_NATIVE_NUM_RECORD_MESG = 3;
+//const SUN_FACING_NATIVE_NUM_RECORD_MESG = 3;
 
-const SUN_FACING_NATIVE_NUM_LAP_MIN_MESG = 63;
-const SUN_FACING_NATIVE_NUM_SESSION_RATE_MESG = 64;
+//const SUN_FACING_NATIVE_NUM_LAP_MIN_MESG = 63;
+//const SUN_FACING_NATIVE_NUM_SESSION_RATE_MESG = 64;
 
-const SUN_FACING_UNITS = "degrees";
+const SUN_FACING_UNITS = "index";
 const SUN_FACING_PST_UNITS = "pst";
 
 
@@ -28,9 +28,9 @@ class SunFacingFit {
 	hidden var mLapStats;
 
     function initialize(dataField) {
-        var sunFacingDegLabel = Application.loadResource(Rez.Strings.sunfacing_deg_label);
+        var sunFacingIndexLabel = Application.loadResource(Rez.Strings.sunfacing_index_label);
 //        mSunFacingRecordField = dataField.createField(sunFacingDegLabel, SUN_FACING_FIELD_RECORD_ID, Fit.DATA_TYPE_FLOAT, { :nativeNum=>SUN_FACING_NATIVE_NUM_RECORD_MESG, :mesgType=>Fit.MESG_TYPE_RECORD, :units=>SUN_FACING_UNITS });
-        mSunFacingRecordField = dataField.createField(sunFacingDegLabel, SUN_FACING_FIELD_RECORD_ID, Fit.DATA_TYPE_FLOAT, {                                                :mesgType=>Fit.MESG_TYPE_RECORD, :units=>SUN_FACING_UNITS });
+        mSunFacingRecordField = dataField.createField(sunFacingIndexLabel, SUN_FACING_FIELD_RECORD_ID, Fit.DATA_TYPE_UINT8, {                                                :mesgType=>Fit.MESG_TYPE_RECORD, :units=>SUN_FACING_UNITS });
 		
         var sunFacingSummaryPstLabel = Application.loadResource(Rez.Strings.sunfacing_summary_pst_label);
 //        mSunFacingRateSessionField = dataField.createField(sunFacingSummaryPstLabel, SUN_FACING_FIELD_SESSION_PST_ID, Fit.DATA_TYPE_FLOAT, { :nativeNum=>SUN_FACING_NATIVE_NUM_SESSION_RATE_MESG, :mesgType=>Fit.MESG_TYPE_SESSION, :units=>SUN_FACING_PST_UNITS });
