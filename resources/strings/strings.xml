@@ -2,7 +2,7 @@
     <string id="AppName">SunFacing</string>
     <string id="sunfacing_graph_label">SunFacing</string>
     <string id="sunfacing_index_label">SunFacing index</string>
-    <string id="sunfacing_units">sf</string>
+    <string id="sunfacing_units">sfi</string>
 
     <string id="sunfacing_summary_pst_label">SunFacing</string>
     <string id="sunfacing_laps_pst_label">SunFacing</string>

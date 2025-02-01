@@ -9,18 +9,17 @@ Can this variable be logged together with the activity?
 Can statics be calculated and presented?
 
 ### possible metrics:
-- SunFacing-deg: Relative angle-difference between the sun's azimuth and the direction/heading of the apparent activity 
-- SunFacing-pst: Percentage of session activity where the direction has had the sun at 45 degrees relative to the apparent direction. Both for the entire session, and for each lap
+- SunFacing-angle: Relative angle-difference between the sun's azimuth and the direction/heading of the apparent activity.
+- SunFacing-index: index that tells how directly towards the sun the activity is at any given time. Index=100 is directly towards the sun, =50 with the sun 45 degrees to the side, and =0 is 90 degrees to the side, and =0 90 and backwards. 
+- SunFacing-pst: Percentage of session activity where the direction has had the sun at 45 degrees relative to the apparent direction. Both for the entire session, and for each lap.
 
 ## App-info
 
-_The goal of this project is to create a Garmin data-field that compute SunFacing which shows the angle the sun is in relation to the direction of activity. And how much of the activity where the sun was right in your face._
+_The goal of this project is to create a Garmin data-field that compute SunFacing which shows how much of the activity where the sun was right in your face._
 
-This datafield app compute SunFacing which is the angle the sun is in relation to the direction of activity. 
+This data field app calculates the Sun-Facing Index, which measures how directly an activity is oriented toward the sun. The index is 100 when the activity is facing the sun directly and 0 when the sun is at a 90-degree angle to the side.
 
-For example, 0 degrees means that we are moving directly towards the sun. 180 degrees means that the sun is directly behind us. 
-
-After the activity, some statistics are calculated. The app calculates how much of the activity, and the lap, where the sun was within 45 degrees. That is, how much of the activity where the sun was right in your face.
+After the activity, the app provides statistics on how much of the time the sun was directly in front of you. Specifically, it calculates the percentage of the activity where the sun was within 45 degrees of your apparent direction.
 
 # Notes to self while coding
 
@@ -57,9 +56,7 @@ A nice [tutorial](https://starttorun.info/tutorial-create-connect-iq-unit-tests/
 
 # TODO
 - [ ] Cleaning code
-- [ ] Vinkel vaskelig å forstå, bruke % isf
 - [ ] Publisere på garmin connect
-- [ ] Heading hopper mye, implementere lowpass-filter
 - [ ] Filtrere vekk tidspunkt når sola er nede
 - [ ] Test-rammeverk i monkey-c? 
 [Unit Testing](https://developer.garmin.com/connect-iq/core-topics/unit-testing/) docs. 
@@ -73,4 +70,6 @@ A nice [tutorial](https://starttorun.info/tutorial-create-connect-iq-unit-tests/
 - [x] Se data på Garmin connect
 - [x] Lagre statistikk    
 - [x] Lagre "SunFacing" i FIT-fil
+- [x] Heading hopper mye, implementere lowpass-filter
+- [x] Vinkel vaskelig å forstå, bruke index isf
 

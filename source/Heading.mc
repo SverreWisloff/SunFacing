@@ -43,16 +43,14 @@ class Heading {
     // Method to get the SunFacing Index
     // TODO - define SunFacing Index algorithm
     function getSunFacingIndex() as Number {
-        var SunFacingPst=0.0 as Double;
-        var SunFacingIndex=0 as Number;
+        var SunFacingIndex;
         self.reduceHeading(true);
         if (_heading.abs() < 90.0) {
-            SunFacingPst = 100.0 - (_heading/90.0 * 100.0).abs();
+            SunFacingIndex = 100.0 - (_heading/90.0 * 100.0).abs();
         }
         else  {
-            SunFacingPst = 0.0;
+            SunFacingIndex = 0.0;
         }
-        SunFacingIndex = SunFacingPst.toNumber();
 
         return SunFacingIndex;
     }

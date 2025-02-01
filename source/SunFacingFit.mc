@@ -3,7 +3,7 @@ using Toybox.WatchUi;
 using Toybox.FitContributor as Fit;
 
 
-const SUN_FACING_FIELD_RECORD_ID = 0;
+const SUN_FACING_INDEX_FIELD_RECORD_ID = 0;
 const SUN_FACING_FIELD_SESSION_PST_ID = 1;
 const SUN_FACING_FIELD_LAP_PST_ID = 2;
 
@@ -29,8 +29,8 @@ class SunFacingFit {
 
     function initialize(dataField) {
         var sunFacingIndexLabel = Application.loadResource(Rez.Strings.sunfacing_index_label);
-//        mSunFacingIndexRecordField = dataField.createField(sunFacingDegLabel, SUN_FACING_FIELD_RECORD_ID, Fit.DATA_TYPE_FLOAT, { :nativeNum=>SUN_FACING_NATIVE_NUM_RECORD_MESG, :mesgType=>Fit.MESG_TYPE_RECORD, :units=>SUN_FACING_UNITS });
-        mSunFacingIndexRecordField = dataField.createField(sunFacingIndexLabel, SUN_FACING_FIELD_RECORD_ID, Fit.DATA_TYPE_UINT8, {                                                :mesgType=>Fit.MESG_TYPE_RECORD, :units=>SUN_FACING_UNITS });
+//        mSunFacingIndexRecordField = dataField.createField(sunFacingDegLabel, SUN_FACING_INDEX_FIELD_RECORD_ID, Fit.DATA_TYPE_UINT8, { :nativeNum=>SUN_FACING_NATIVE_NUM_RECORD_MESG, :mesgType=>Fit.MESG_TYPE_RECORD, :units=>SUN_FACING_UNITS });
+        mSunFacingIndexRecordField = dataField.createField(sunFacingIndexLabel, SUN_FACING_INDEX_FIELD_RECORD_ID, Fit.DATA_TYPE_UINT8, {                                                :mesgType=>Fit.MESG_TYPE_RECORD, :units=>SUN_FACING_UNITS });
 		
         var sunFacingSummaryPstLabel = Application.loadResource(Rez.Strings.sunfacing_summary_pst_label);
 //        mSunFacingRateSessionField = dataField.createField(sunFacingSummaryPstLabel, SUN_FACING_FIELD_SESSION_PST_ID, Fit.DATA_TYPE_FLOAT, { :nativeNum=>SUN_FACING_NATIVE_NUM_SESSION_RATE_MESG, :mesgType=>Fit.MESG_TYPE_SESSION, :units=>SUN_FACING_PST_UNITS });

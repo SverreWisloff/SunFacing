@@ -102,6 +102,8 @@ class SunFacingView extends WatchUi.SimpleDataField {
         SunFacingIndex = lastSunFaceIndex*dempning + SunFacingIndex*(1.0-dempning);
         lastSunFaceIndex=SunFacingIndex;
 
+        SunFacingIndex = SunFacingIndex.toNumber();
+
         System.println("sunAzimuth=" + _sunAzimuth.toDouble() + " heading=" + heading.toDouble() + " SunFacingAngle=" + SunFacingAngle.getHeading() + " SunFacingIndex=" + SunFacingIndex);
 
         mSunFacingFit.setSunFacingData(SunFacingAngle.getHeading(), SunFacingIndex);
