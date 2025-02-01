@@ -15,7 +15,7 @@ class SunFacingStatistics{
 		Sout = new SimpleStats();
 	}
     
-    function setData(value) {
+    function setSunFacingAngle(value) {
 
         value = reduseHeading(value);
 

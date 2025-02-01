@@ -90,12 +90,9 @@ class Heading {
 
     // Method to reduce the heading to be within -180 to 180 degrees
     function reduceHeading(update as Boolean) as Double {
-        var reducedHeading = _heading;
-        if (reducedHeading > 180.0) {
-            reducedHeading -= 360.0;
-        } else if (reducedHeading < -180.0) {
-            reducedHeading += 360.0;
-        }
+
+        var reducedHeading = reduseHeading(_heading);
+
         if (update) {
             _heading = reducedHeading;
         }
