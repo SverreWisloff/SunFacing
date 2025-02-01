@@ -13,11 +13,13 @@ class SunFacingView extends WatchUi.SimpleDataField {
     private var _sc;
     public var _sunAzimuth as Heading;
     public var _lastSunAzimuth = null as Time.Moment;
+    private var lastSunFaceIndex;
 
     // Set the label of the data field here.
     function initialize() {
         SimpleDataField.initialize();
         label = "SunFacing";
+        lastSunFaceIndex=0;
 
         mSunFacingFit = new SunFacingFit(self);
         
@@ -95,7 +97,12 @@ class SunFacingView extends WatchUi.SimpleDataField {
 
         SunFacingIndex = SunFacingHeading.getSunFacingIndex();
 
-        System.println("sunAzimuth=" + _sunAzimuth.toDouble() + " heading=" + heading.toDouble() + " SunFacingIndex=" + SunFacingIndex);
+        //Simple moving average
+        var dempning = 0.8;
+        SunFacingIndex = lastSunFaceIndex*dempning + SunFacingIndex*(1.0-dempning);
+        lastSunFaceIndex=SunFacingIndex;
+
+        System.println("sunAzimuth=" + _sunAzimuth.toDouble() + " heading=" + heading.toDouble() + " SunFacingHeading=" + SunFacingHeading + " SunFacingIndex=" + SunFacingIndex);
 
         mSunFacingFit.setSunFacingData(SunFacingHeading.getHeading(), SunFacingIndex);
 
