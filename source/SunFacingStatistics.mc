@@ -3,16 +3,16 @@
 
 class SunFacingStatistics{
 
-	public var Nort;
-	public var East;
-	public var West;
-	public var Sout;
+	public var Front;
+	public var Right;
+	public var Left;
+	public var Back;
 
 	function initialize() {
-		Nort = new SimpleStats();
-		East = new SimpleStats();
-		West = new SimpleStats();
-		Sout = new SimpleStats();
+		Front = new SimpleStats();
+		Right = new SimpleStats();
+		Left = new SimpleStats();
+		Back = new SimpleStats();
 	}
     
     function setSunFacingAngle(value) {
@@ -20,20 +20,20 @@ class SunFacingStatistics{
         value = reduseHeading(value);
 
         if(value >= -45 && value < 45) {
-            Nort.setData(value);
+            Front.setData(value);
         } else if(value >= 45 && value < 135) {
-            East.setData(value);
+            Right.setData(value);
         } else if(value < -45 && value >= -135) {
-            West.setData(value);
+            Left.setData(value);
         } else {
-            Sout.setData(value);
+            Back.setData(value);
         }
 
 		return self;
 	}
 
     function count() {
-        var totalCount = Nort.count() + East.count() + West.count() + Sout.count();
+        var totalCount = Front.count() + Right.count() + Left.count() + Back.count();
         return totalCount;
     }
     
@@ -45,15 +45,15 @@ class SunFacingStatistics{
             return 0;
         }
         
-        var SunFacingPst = Nort.count().toDouble() / totalCount * 100.0;
+        var SunFacingPst = Front.count().toDouble() / totalCount * 100.0;
 
         return SunFacingPst; 
     }
 
     function reset() {
-        Nort.reset();
-        East.reset();
-        West.reset();
-        Sout.reset();
+        Front.reset();
+        Right.reset();
+        Left.reset();
+        Back.reset();
 	}
 }
