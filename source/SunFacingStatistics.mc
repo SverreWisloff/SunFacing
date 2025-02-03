@@ -17,16 +17,16 @@ class SunFacingStatistics{
     
     function setSunFacingAngle(value) {
 
-        value = reduseHeading(value);
+        var angle = reduseHeading(value);
 
-        if(value >= -45 && value < 45) {
+        if(angle >= -45 && angle < 45) {
             Front.setData(value);
-        } else if(value >= 45 && value < 135) {
+        } else if(angle >= 45 && angle < 135) {
             Right.setData(value);
-        } else if(value < -45 && value >= -135) {
-            Left.setData(value);
+        } else if(angle < -45 && angle >= -135) {
+            Left.setData(angle);
         } else {
-            Back.setData(value);
+            Back.setData(angle);
         }
 
 		return self;
