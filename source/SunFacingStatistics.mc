@@ -1,4 +1,4 @@
-//import SimpleStats;
+import Toybox.Lang;
 
 
 class SunFacingStatistics{
@@ -11,13 +11,13 @@ class SunFacingStatistics{
 	function initialize() {
 		Front = new SimpleStats();
 		Right = new SimpleStats();
-		Left = new SimpleStats();
-		Back = new SimpleStats();
+		Left  = new SimpleStats();
+		Back  = new SimpleStats();
 	}
     
     function setSunFacingAngle(value) {
 
-        var angle = reduseHeading(value);
+        var angle = reduseHeading(value); //angle = <-180.0, 180.0>
 
         if(angle >= -45 && angle < 45) {
             Front.setData(value);
@@ -39,13 +39,11 @@ class SunFacingStatistics{
     
     function SunFacingPst() { 
 
-        var totalCount = self.count().toDouble();
-        
-        if (totalCount==0) {
-            return 0;
+        if (self.count()<=0){
+            return 0.0; //No data
         }
-        
-        var SunFacingPst = Front.count().toDouble() / totalCount * 100.0;
+                        
+        var SunFacingPst = Front.count().toDouble() / self.count().toFloat() * 100.0;
 
         return SunFacingPst; 
     }
@@ -56,4 +54,21 @@ class SunFacingStatistics{
         Left.reset();
         Back.reset();
 	}
+
+    function printPst() as String {
+
+        if (self.count()<=0){
+            return "No data";
+        }
+        
+        var FrontPst = Front.count().toDouble() / self.count() * 100.0;
+        var RightPst = Right.count().toDouble() / self.count() * 100.0;
+        var LeftPst  = Left.count().toDouble()  / self.count() * 100.0;
+        var BackPst  = Back.count().toDouble()  / self.count() * 100.0;
+
+        var returnString = "Front: " + FrontPst.toNumber() + "%, Right: " + RightPst.toNumber() + "%, Left: " + LeftPst.toNumber() + "%, Back: " + BackPst.toNumber() + "%";
+
+        return returnString;
+	}
+
 }

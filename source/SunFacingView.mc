@@ -53,7 +53,8 @@ class SunFacingView extends WatchUi.SimpleDataField {
             _sunAzimuth.setHeading(sunCoordLocal.azimuth-180.0);
             _lastSunAzimuth = momentNow;
 
-            System.println( _sc.PrintTime(momentNow.value(), "initialize_SunCalc") + " latitude=" + latitude + " longitude=" + longitude + " sunAzimuth=" + _sunAzimuth.reduceHeading(false));
+            //DEBUG
+            //System.println( _sc.PrintTime(momentNow.value(), "initialize_SunCalc") + " latitude=" + latitude + " longitude=" + longitude + " sunAzimuth=" + _sunAzimuth.reduceHeading(false));
 		}
 
         return;
@@ -104,7 +105,8 @@ class SunFacingView extends WatchUi.SimpleDataField {
 
         SunFacingIndex = SunFacingIndex.toNumber();
 
-        System.println("sunAzimuth=" + _sunAzimuth.toDouble() + " heading=" + heading.toDouble() + " SunFacingAngle=" + SunFacingAngle.getHeading() + " SunFacingIndex=" + SunFacingIndex);
+        //DEBUG
+        //System.println("sunAzimuth=" + _sunAzimuth.toDouble() + " heading=" + heading.toDouble() + " SunFacingAngle=" + SunFacingAngle.getHeading() + " SunFacingIndex=" + SunFacingIndex);
 
         mSunFacingFit.setSunFacingData(SunFacingAngle.getHeading(), SunFacingIndex);
 

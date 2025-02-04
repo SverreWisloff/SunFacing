@@ -5,7 +5,7 @@ import Toybox.Lang;
 
 
 
-// Reduces heading to range -180 to 180
+// Reduces heading to range -180 to 180. heading=<-180.0, 180.0>
 function reduseHeading(heading) {
     var returnHeading;
     heading = heading.toFloat();
@@ -89,7 +89,7 @@ class Heading {
     // Method to reduce the heading to be within -180 to 180 degrees
     function reduceHeading(update as Boolean) as Double {
 
-        var reducedHeading = reduseHeading(_heading);
+        var reducedHeading = reduseHeading(_heading); //heading=<-180.0, 180.0>
 
         if (update) {
             _heading = reducedHeading;

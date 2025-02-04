@@ -55,7 +55,7 @@ A nice [tutorial](https://starttorun.info/tutorial-create-connect-iq-unit-tests/
 
 
 # TODO
-- [ ] Cleaning code
+- [ ] Simple moving average on SF-angle instedof SF-index
 - [ ] Publisere på garmin connect
 - [ ] Filtrere vekk tidspunkt når sola er nede
 - [ ] Test-rammeverk i monkey-c? 
