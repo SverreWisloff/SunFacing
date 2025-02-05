@@ -11,9 +11,11 @@ class SunFacingView extends WatchUi.SimpleDataField {
 
     hidden var mSunFacingFit;
     private var _sc;
+    public var _sunAltitude;
     public var _sunAzimuth as Heading;
     public var _lastSunAzimuth = null as Time.Moment;
     private var lastSunFaceIndex;
+
 
     // Set the label of the data field here.
     function initialize() {
@@ -25,6 +27,7 @@ class SunFacingView extends WatchUi.SimpleDataField {
         
         _sc = new sunCalc();
         _sunAzimuth = new Heading();
+        _sunAltitude = -1.0;
 
         initialize_SunCalc();
     }
@@ -51,6 +54,7 @@ class SunFacingView extends WatchUi.SimpleDataField {
             var sunCoordLocal = _sc.getSunPosition();
 
             _sunAzimuth.setHeading(sunCoordLocal.azimuth-180.0);
+            _sunAltitude = sunCoordLocal.altitude;
             _lastSunAzimuth = momentNow;
 
             //DEBUG
@@ -76,8 +80,8 @@ class SunFacingView extends WatchUi.SimpleDataField {
             var now = Time.now();
             var momentNow = new Time.Moment(now.value() );
             var timeDiffSeconds = momentNow.compare(_lastSunAzimuth);
-            if (timeDiffSeconds > 600) {
-                //Recalculate sun azimuth every 10 minutes
+            if (timeDiffSeconds > 60) {
+                //Recalculate sun azimuth every 1 minutes
                 initialize_SunCalc();
             }
         }
@@ -96,20 +100,21 @@ class SunFacingView extends WatchUi.SimpleDataField {
 
         SunFacingAngle = _sunAzimuth.subtract(heading.toDouble());
 
-        SunFacingIndex = SunFacingAngle.getSunFacingIndex();
+        if (_sunAltitude>=0.0){
+            SunFacingIndex = SunFacingAngle.getSunFacingIndex();
 
-        //Simple moving average
-        var dempning = 0.8;
-        SunFacingIndex = lastSunFaceIndex*dempning + SunFacingIndex*(1.0-dempning);
-        lastSunFaceIndex=SunFacingIndex;
+            //Simple moving average
+            var dempning = 0.8;
+            SunFacingIndex = lastSunFaceIndex*dempning + SunFacingIndex*(1.0-dempning);
+            lastSunFaceIndex=SunFacingIndex;
 
-        SunFacingIndex = SunFacingIndex.toNumber();
+            SunFacingIndex = SunFacingIndex.toNumber();
 
-        //DEBUG
-        //System.println("sunAzimuth=" + _sunAzimuth.toDouble() + " heading=" + heading.toDouble() + " SunFacingAngle=" + SunFacingAngle.getHeading() + " SunFacingIndex=" + SunFacingIndex);
+            //DEBUG
+            //System.println("sunAzimuth=" + _sunAzimuth.toDouble() + " heading=" + heading.toDouble() + " SunFacingAngle=" + SunFacingAngle.getHeading() + " SunFacingIndex=" + SunFacingIndex);
 
-        mSunFacingFit.setSunFacingData(SunFacingAngle.getHeading(), SunFacingIndex);
-
+            mSunFacingFit.setSunFacingData(SunFacingAngle.getHeading(), SunFacingIndex);
+        }
         return SunFacingIndex;
     }
 

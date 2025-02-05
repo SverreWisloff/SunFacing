@@ -53,7 +53,7 @@ class SunFacingFit {
 
             //DEBUG
             //System.println(mSessionStats.printPst());
-            System.println(mLapStats.printPst());
+            //System.println(mLapStats.printPst());
 
        		mSunFacingRateSessionField.setData(mSessionStats.SunFacingPst());
             mSunFacingRateLapField.setData(mLapStats.SunFacingPst());
