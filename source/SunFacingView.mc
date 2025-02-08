@@ -6,6 +6,10 @@ import Toybox.Math;
 import Toybox.Position;
 import SunCalcModule;
 
+(:release)
+const DEBUG = false;
+(:debug)
+const DEBUG = true;
 
 class SunFacingView extends WatchUi.SimpleDataField {
 
@@ -100,10 +104,11 @@ class SunFacingView extends WatchUi.SimpleDataField {
 
         SunFacingAngle = _sunAzimuth.subtract(heading.toDouble());
 
-        //DEBUG
-        //TODO
-        _sunAltitude=1.0;
-        
+        //TODO: Test that this actually works
+        if (DEBUG){
+            _sunAltitude=1.0;
+        }
+
         if (_sunAltitude>=0.0){
             SunFacingIndex = SunFacingAngle.getSunFacingIndex();
 

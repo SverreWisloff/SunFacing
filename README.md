@@ -47,6 +47,12 @@ To see the data in Garmin Connect, you have to have installed the app from the a
 
 https://www.fitfileviewer.com/
 
+## Debug compiler-instructions
+(:release)
+const DEBUG = false;
+(:debug)
+const DEBUG = true;
+
 ## Unit testing
 [Unit Testing](https://developer.garmin.com/connect-iq/core-topics/unit-testing/) docs.
 
