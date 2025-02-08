@@ -8,4 +8,7 @@
     <string id="sunfacing_laps_pst_label">SunFacing</string>
     <string id="pst">%</string>
 
+    <string id="sunfacing_angle_label">SunFacing angle</string>
+    <string id="sunfacing_angle_units">degree</string>
+
 </strings>

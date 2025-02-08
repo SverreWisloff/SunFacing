@@ -100,6 +100,10 @@ class SunFacingView extends WatchUi.SimpleDataField {
 
         SunFacingAngle = _sunAzimuth.subtract(heading.toDouble());
 
+        //DEBUG
+        //TODO
+        _sunAltitude=1.0;
+        
         if (_sunAltitude>=0.0){
             SunFacingIndex = SunFacingAngle.getSunFacingIndex();
 

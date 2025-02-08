@@ -1,12 +1,12 @@
     <fitContributions>
         <fitField id="0" 
-        displayInChart="true" 
-        sortOrder = "0" 
-        precision="0"
-        chartTitle="@Strings.sunfacing_graph_label" 
-        dataLabel="@Strings.sunfacing_index_label"
-        unitLabel="@Strings.sunfacing_units" 
-        fillColor="#ffe100" />
+			displayInChart="true" 
+			sortOrder = "0" 
+			precision="0"
+			chartTitle="@Strings.sunfacing_graph_label" 
+			dataLabel="@Strings.sunfacing_index_label"
+			unitLabel="@Strings.sunfacing_units" 
+			fillColor="#ffe100" />
 
 		<fitField id="1" 
 			displayInActivitySummary="true" 
@@ -22,4 +22,12 @@
 			dataLabel="@Strings.sunfacing_laps_pst_label"
 			unitLabel="@Strings.pst" />
 
+        <fitField id="3" 
+			displayInChart="true" 
+			sortOrder = "3" 
+			precision="1"
+			chartTitle="@Strings.sunfacing_angle_label" 
+			dataLabel="@Strings.sunfacing_angle_label"
+			unitLabel="@Strings.sunfacing_angle_units" 
+			fillColor="#ffe100" />
     </fitContributions>
