@@ -53,7 +53,7 @@ class SunFacingView extends WatchUi.SimpleDataField {
             _sc.setDate(momentNow.value());
             var sunCoordLocal = _sc.getSunPosition();
 
-            _sunAzimuth.setHeading(sunCoordLocal.azimuth-180.0);
+            _sunAzimuth.setHeadingDeg(sunCoordLocal.azimuth-180.0);
             _sunAltitude = sunCoordLocal.altitude;
             _lastSunAzimuth = momentNow;
 
@@ -92,10 +92,10 @@ class SunFacingView extends WatchUi.SimpleDataField {
         var heading = 0.0;
 
         if (info.track>=0.00001 || info.track<=-0.00001) {
-            heading = info.track/Math.PI*180.0;
+            heading = info.track;
         }
         else {
-            heading = info.currentHeading/Math.PI*180.0;
+            heading = info.currentHeading;
         }
 
         SunFacingAngle = _sunAzimuth.subtract(heading.toDouble());
@@ -113,7 +113,7 @@ class SunFacingView extends WatchUi.SimpleDataField {
             //DEBUG
             //System.println("sunAzimuth=" + _sunAzimuth.toDouble() + " heading=" + heading.toDouble() + " SunFacingAngle=" + SunFacingAngle.getHeading() + " SunFacingIndex=" + SunFacingIndex);
 
-            mSunFacingFit.setSunFacingData(SunFacingAngle.getHeading(), SunFacingIndex);
+            mSunFacingFit.setSunFacingData(SunFacingAngle.getHeadingDeg(), SunFacingIndex);
         }
         return SunFacingIndex;
     }

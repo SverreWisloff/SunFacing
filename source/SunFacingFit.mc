@@ -44,12 +44,12 @@ class SunFacingFit {
 		mLapStats = new SunFacingStatistics();    
     }
 
-    function setSunFacingData(SunFacingAngle as Double, SunFacingIndex as Number) {
+    function setSunFacingData(SunFacingAngleDeg as Double, SunFacingIndex as Number) {
         mSunFacingIndexRecordField.setData(SunFacingIndex);
 
         if(mTimerRunning) {
-            mSessionStats.setSunFacingAngle(SunFacingAngle);
-            mLapStats.setSunFacingAngle(SunFacingAngle);
+            mSessionStats.setSunFacingAngleDeg(SunFacingAngleDeg);
+            mLapStats.setSunFacingAngleDeg(SunFacingAngleDeg);
 
             //DEBUG
             //System.println(mSessionStats.printPst());

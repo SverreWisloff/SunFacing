@@ -6,7 +6,7 @@ import Toybox.Lang;
 
 
 // Reduces heading to range -180 to 180. heading=<-180.0, 180.0>
-function reduseHeading(heading) {
+function reduseHeadingDeg(heading) {
     var returnHeading;
     heading = heading.toFloat();
     if(heading < -180.0) {
@@ -22,7 +22,7 @@ function reduseHeading(heading) {
 
 class Heading {
 
-    private var _heading = 0.0 as Double;
+    private var _heading = 0.0 as Double; //Radians
 
     // Constructor
     function initialize() {
@@ -31,13 +31,25 @@ class Heading {
     }
 
     // Method to set the heading
-    function setHeading(heading as Double) {
+    function setHeadingRad(heading as Double) {
+        //TODO validate heading
         _heading = heading;
     }
 
+    // Method to set the heading
+    function setHeadingDeg(heading as Double) {
+        //TODO validate heading
+        _heading = heading * Math.PI / 180.0;
+    }
+
     // Method to get the heading
-    function getHeading() as Double {
+    function getHeadingRad() as Double {
         return _heading;
+    }
+
+    // Method to get the heading
+    function getHeadingDeg() as Double {
+        return _heading * 180.0 / Math.PI;
     }
 
     // Method to get the SunFacing Index
@@ -45,43 +57,45 @@ class Heading {
     function getSunFacingIndex() as Number {
         var SunFacingIndex;
         self.reduceHeading(true);
-        if (_heading.abs() < 90.0) {
-            SunFacingIndex = 100.0 - (_heading/90.0 * 100.0).abs();
+        var degHeading = self.getHeadingDeg();
+
+        if (degHeading.abs() < 90.0) {
+            SunFacingIndex = 100.0 - (degHeading/90.0 * 100.0).abs();
         }
         else  {
             SunFacingIndex = 0.0;
         }
 
-        return SunFacingIndex;
+        return SunFacingIndex.toNumber();
     }
 
-    // Method to get the heading as a Double
+    // Method to get the heading in radians as a Double
     function toDouble() as Double {
         return _heading;
     }
-
+/*
     // Method to update the heading based on some input
     function updateHeading(newHeading as Double) {
         _heading = newHeading;
     }
-
+*/
     // Method to get the heading as a string
     function getHeadingString() as Lang.String {
-        return _heading.toString() + "°";
+        return self.getHeadingDeg().toString() + "°";
     }
 
     // Overloading the + operator
     function add(other as Heading) as Heading {
         var newHeading = new Heading();
-        newHeading.setHeading((self._heading + other.getHeading()) % 360);
+        newHeading.setHeadingRad((self._heading + other.getHeadingRad()));
         return newHeading;
     }
 
     // Overloading the - operator
     function subtract(other as Heading or Double) as Heading {
         var newHeading = new Heading();
-        var otherDeg = other.toDouble();
-        newHeading.setHeading(self._heading - otherDeg);
+        var otherRad = other.toDouble();
+        newHeading.setHeadingRad(self._heading - otherRad);
         newHeading.reduceHeading(true);
         return newHeading;
     }
@@ -89,11 +103,35 @@ class Heading {
     // Method to reduce the heading to be within -180 to 180 degrees
     function reduceHeading(update as Boolean) as Double {
 
-        var reducedHeading = reduseHeading(_heading); //heading=<-180.0, 180.0>
+        var reducedHeadingDeg = reduseHeadingDeg(self.getHeadingDeg()); //heading=<-180.0, 180.0>
 
         if (update) {
-            _heading = reducedHeading;
+            self.setHeadingDeg(reducedHeadingDeg);
         }
-        return reducedHeading;
+        return reducedHeadingDeg;
     }
+/*
+    // self.Heading is the signal
+    function lowpass(lastHeading as Heading, dempning as Float) as Heading {
+        var returnHeading = new Heading();
+        var reducedSignal = reduseHeading(_heading); //heading=<-180.0, 180.0>
+        var reducedLast   = reduseHeading(lastHeading);
+
+
+        var xLast = Math.cos(lastHeading.getHeading());
+        var yLast = Math.sin(lastHeading.getHeading());
+
+        var xSignal = Math.cos(_heading);
+        var ySignal = Math.sin(_heading);
+
+        var xFilteredSignal = (xSignal * dempning) + ( xLast * (1.0-dempning) );
+        var yFilteredSignal = (ySignal * dempning) + ( yLast * (1.0-dempning) );
+
+        var filteredHeading = Math.atan2(yFilteredSignal, xFilteredSignal);
+
+        var returnHeading.setHeadingRad(filteredHeading);
+
+        return returnHeading;
+    }
+*/
 }

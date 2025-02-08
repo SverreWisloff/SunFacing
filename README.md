@@ -10,9 +10,9 @@ Can this variable be logged together with the activity?
 Can statics be calculated and presented?
 
 ### SunFacing metrics:
-- SunFacing-angle: Relative angle-difference between the sun's azimuth and the direction/heading of the apparent activity.
-- SunFacing-index: index that tells how directly towards the sun the activity is at any given time. Index=100 is directly towards the sun, =50 with the sun 45 degrees to the side, and =0 is 90 degrees to the side, and =0 90 and backwards. 
-- SunFacing-pst: Percentage of session activity where the direction has had the sun at 45 degrees relative to the apparent direction. Both for the entire session, and for each lap.
+- **SunFacing-angle**: Relative angle-difference between the sun's azimuth and the direction/heading of the apparent activity.
+- **SunFacing-index**: index that tells how directly towards the sun the activity is at any given time. Index=100 is directly towards the sun, =50 with the sun 45 degrees to the side, and =0 is 90 degrees to the side, and =0 90 and backwards. 
+- **SunFacing-pst**: Percentage of session activity where the direction has had the sun at 45 degrees relative to the apparent direction. Both for the entire session, and for each lap.
 
 ## App-info
 This data field app calculates the Sun-Facing Index, which measures how directly an activity is oriented toward the sun. The index is 100 when the activity is facing the sun directly and 0 when the sun is at a 90-degree angle to the side.
@@ -55,6 +55,7 @@ An [example](https://github.com/ferranpujolcamins/GarminApps/tree/main/BarrelTes
 A nice [tutorial](https://starttorun.info/tutorial-create-connect-iq-unit-tests/).
 
 # TODO
+- [ ] Moving average on angles
 - [ ] Simple moving average on SF-angle instedof SF-index
 - [ ] Publisere på garmin connect
 - [ ] Test-rammeverk i monkey-c? 

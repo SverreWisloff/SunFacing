@@ -15,9 +15,9 @@ class SunFacingStatistics{
 		Back  = new SimpleStats();
 	}
     
-    function setSunFacingAngle(value) {
+    function setSunFacingAngleDeg(value) {
 
-        var angle = reduseHeading(value); //angle = <-180.0, 180.0>
+        var angle = reduseHeadingDeg(value); //angle = <-180.0, 180.0>
 
         if(angle >= -45 && angle < 45) {
             Front.setData(value);
