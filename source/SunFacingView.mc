@@ -18,20 +18,22 @@ class SunFacingView extends WatchUi.SimpleDataField {
     public var _sunAltitude;
     public var _sunAzimuth as Heading;
     public var _lastSunAzimuth = null as Time.Moment;
-    private var lastSunFaceIndex;
+//    private var lastSunFaceIndex;
+    private var _filteredSunFacingAngle = null as Heading;
 
 
     // Set the label of the data field here.
     function initialize() {
         SimpleDataField.initialize();
         label = "SunFacing";
-        lastSunFaceIndex=0;
+//        lastSunFaceIndex=0;
 
         mSunFacingFit = new SunFacingFit(self);
         
         _sc = new sunCalc();
         _sunAzimuth = new Heading();
         _sunAltitude = -1.0;
+        _filteredSunFacingAngle = new Heading();
 
         initialize_SunCalc();
     }
@@ -104,25 +106,24 @@ class SunFacingView extends WatchUi.SimpleDataField {
 
         SunFacingAngle = _sunAzimuth.subtract(heading.toDouble());
 
+        //Simple moving average
+        var dempning = 0.9;
+        _filteredSunFacingAngle.lowpass(SunFacingAngle, dempning);
+
         //TODO: Test that this actually works
         if (DEBUG){
             _sunAltitude=1.0;
         }
 
         if (_sunAltitude>=0.0){
-            SunFacingIndex = SunFacingAngle.getSunFacingIndex();
-
-            //Simple moving average
-            var dempning = 0.8;
-            SunFacingIndex = lastSunFaceIndex*dempning + SunFacingIndex*(1.0-dempning);
-            lastSunFaceIndex=SunFacingIndex;
+            SunFacingIndex = _filteredSunFacingAngle.getSunFacingIndex();
 
             SunFacingIndex = SunFacingIndex.toNumber();
 
             //DEBUG
             //System.println("sunAzimuth=" + _sunAzimuth.toDouble() + " heading=" + heading.toDouble() + " SunFacingAngle=" + SunFacingAngle.getHeading() + " SunFacingIndex=" + SunFacingIndex);
 
-            mSunFacingFit.setSunFacingData(SunFacingAngle.getHeadingDeg(), SunFacingIndex);
+            mSunFacingFit.setSunFacingData(_filteredSunFacingAngle.getHeadingDeg(), SunFacingIndex);
         }
         return SunFacingIndex;
     }

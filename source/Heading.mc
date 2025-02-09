@@ -110,28 +110,30 @@ class Heading {
         }
         return reducedHeadingDeg;
     }
-/*
+
     // self.Heading is the signal
-    function lowpass(lastHeading as Heading, dempning as Float) as Heading {
-        var returnHeading = new Heading();
-        var reducedSignal = reduseHeading(_heading); //heading=<-180.0, 180.0>
-        var reducedLast   = reduseHeading(lastHeading);
+    function lowpass(signal as Heading, dempning as Float) {
+        //var returnHeading = new Heading();
 
+        self.reduceHeading(true);           //signal=<-180.0, 180.0>
+        signal.reduceHeading(true);    //last  =<-180.0, 180.0>
 
-        var xLast = Math.cos(lastHeading.getHeading());
-        var yLast = Math.sin(lastHeading.getHeading());
+        var xSignal = Math.cos(signal.getHeadingRad());
+        var ySignal = Math.sin(signal.getHeadingRad());
 
-        var xSignal = Math.cos(_heading);
-        var ySignal = Math.sin(_heading);
+        var xLast = Math.cos(_heading);
+        var yLast = Math.sin(_heading);
 
         var xFilteredSignal = (xSignal * dempning) + ( xLast * (1.0-dempning) );
         var yFilteredSignal = (ySignal * dempning) + ( yLast * (1.0-dempning) );
 
         var filteredHeading = Math.atan2(yFilteredSignal, xFilteredSignal);
 
-        var returnHeading.setHeadingRad(filteredHeading);
+        System.println("Signal=" + signal.getHeadingDeg() + " Last=" + self.getHeadingDeg() + " Filtered=" + filteredHeading * 180.0 / Math.PI);
 
-        return returnHeading;
+        self.setHeadingRad(filteredHeading);
+
+        return ;
     }
-*/
+
 }
