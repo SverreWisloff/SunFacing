@@ -61,8 +61,6 @@ An [example](https://github.com/ferranpujolcamins/GarminApps/tree/main/BarrelTes
 A nice [tutorial](https://starttorun.info/tutorial-create-connect-iq-unit-tests/).
 
 # TODO
-- [ ] Moving average on angles
-- [ ] Simple moving average on SF-angle instedof SF-index
 - [ ] Publisere på garmin connect
 - [ ] Test-rammeverk i monkey-c? 
 [Unit Testing](https://developer.garmin.com/connect-iq/core-topics/unit-testing/) docs. 
@@ -79,4 +77,6 @@ A nice [tutorial](https://starttorun.info/tutorial-create-connect-iq-unit-tests/
 - [x] Heading hopper mye, implementere lowpass-filter
 - [x] Vinkel vaskelig å forstå, bruke index isf
 - [x] Filtrere vekk tidspunkt når sola er nede
+- [x] Moving average on angles
+- [x] Simple moving average on SF-angle instedof SF-index
 
