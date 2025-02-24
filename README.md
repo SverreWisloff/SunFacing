@@ -19,9 +19,11 @@ This data field app calculates the Sun-Facing Index, which measures how directly
 
 After the activity, the app provides statistics on how much of the time the sun was directly in front of you. Specifically, it calculates the percentage of the activity where the sun was within 45 degrees of your apparent direction.
 
-## Screenshot
-![screehot](https://github.com/SverreWisloff/SunFacing/blob/main/screenshot/gc-sunfacing-index.jpg?raw=true)
+[Download](https://apps.garmin.com/apps/82b5fdd2-13eb-4235-bb01-483613af5efa) form Garmin Connect.
 
+## Screenshot
+![garmin connect](https://github.com/SverreWisloff/SunFacing/blob/main/screenshot/gc-sunfacing-index.jpg?raw=true)
+![screehot](https://github.com/SverreWisloff/SunFacing/blob/main/screenshot/f7pro_sunfacing.jpg?raw=true)
 
 # Notes to self while coding
 
